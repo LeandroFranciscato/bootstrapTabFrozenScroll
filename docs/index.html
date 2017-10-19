@@ -5,9 +5,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="https://raw.githubusercontent.com/LeandroFranciscato/bootstrapTabFrozenScroll/master/src/css/tabFrozenScroll.css" rel="stylesheet"/>
 
         <style>
+
+            .nav.nav-tabs {
+                background: whitesmoke;
+            }
+
+            .tab-fixed {
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                background: whitesmoke;
+                z-index: 100;        
+            }
+
             .active-green {
                 background :lightgreen !important
             }
@@ -1016,7 +1029,91 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="https://raw.githubusercontent.com/LeandroFranciscato/bootstrapTabFrozenScroll/master/src/js/tabFrozenScroll.js"></script>
+        <script>
+            var tabs = [];
+            function tabFrozenScroll(mainTable, tabElement, minScrollHeight) {
+                var tabFixedClass = "tab-fixed";
+
+                $(mainTable).on("click", function () {
+                    tabs = [];
+                });
+
+                if (minScrollHeight === 0) {
+                    minScrollHeight = -1;
+                }
+
+                if ($(window).scrollTop() > minScrollHeight) {
+                    moveTab();
+                }
+
+                $(window).scroll(function () {
+                    var firstTab = $($(tabElement).children()[0]).hasClass("active");
+                    if (firstTab) {
+                        moveTab();
+                    }
+                });
+
+                function moveTab() {
+                    if ($(window).scrollTop() > minScrollHeight) {
+                        $(tabElement).addClass(tabFixedClass);
+                    } else {
+                        $(tabElement).removeClass(tabFixedClass);
+                    }
+                }
+
+                $(tabElement).find("li").on("click", function (el) {
+                    var idParentTab = $(el.target).attr("data-parent");
+                    var idTab = $(el.target).attr("id");
+                    if (idParentTab) {
+                        saveTabPosition(idParentTab);
+                    }
+                    if (idTab) {
+                        scrollToTabPosition(idTab, el);
+                    }
+                });
+
+                function saveTabPosition(idTab) {
+                    var i = findIndexTab(idTab);
+                    if (tabs[i]["lastScroll"] === 0) {
+                        tabs[i]["lastScroll"] = $(window).scrollTop();
+                    }
+                }
+
+                function scrollToTabPosition(idTab, el) {
+                    var i = findIndexTab(idTab);
+                    setTimeout(function () {
+                        $(window).scrollTop(tabs[i]["lastScroll"]);
+                        if (!$(el.target).attr("data-parent")) {
+                            tabs[i]["lastScroll"] = 0;
+                        }
+                    });
+                }
+
+                function findIndexTab(idTab) {
+                    if (!existsInArrayByIndex(tabs, "tab", idTab)) {
+                        tabs.push({tab: idTab, lastScroll: 0});
+                    }
+                    var i = 0;
+                    var iTab;
+                    tabs.forEach(function (theOne) {
+                        if (theOne.tab === idTab) {
+                            iTab = i;
+                        }
+                        i++;
+                    });
+                    return iTab;
+                }
+
+                function existsInArrayByIndex(array, index, search) {
+                    var indexArray = array.map(function (x) {
+                        return x[index];
+                    });
+                    var result = indexArray.indexOf(search);
+                    return (result === -1) ? false : true;
+                }
+            }
+
+        </script>
         <script>
             tabFrozenScroll("#mainTable", ".nav.nav-tabs", 0);
             $("tr").on("click", function (el) {

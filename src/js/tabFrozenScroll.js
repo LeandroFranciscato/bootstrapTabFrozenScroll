@@ -82,4 +82,3 @@ function tabFrozenScroll(mainTable, tabElement, minScrollHeight) {
         return (result === -1) ? false : true;
     }
 }
-;
