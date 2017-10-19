@@ -16,7 +16,7 @@ You can use it for master-detail thing, or just to present content to users. Any
 Using this simple project, you are able to solve the issues above.
 
 * Here is an example using the default bootstrap tabs.
-* Here is an example using it with **bootstrapTabFrozenScroll**.
+* [Here](https://github.com/LeandroFranciscato/bootstrapTabFrozenScroll/blob/master/example/index.html) is an example using it with **bootstrapTabFrozenScroll**.
 
 ### Dependencies
 
