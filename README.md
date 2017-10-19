@@ -1,19 +1,19 @@
 ### The "Problem"
 
-As you mus know, [Bootstrap tabs](https://mdbootstrap.com/components/tabs/) are very helpfull in projects that use it.
+As you must know, [Bootstrap tabs](https://mdbootstrap.com/components/tabs/) are very helpfull in projects that use it.
 You can use it for master-detail thing, or just to present content to users. Anyway, it very simple to use... ***BUT***... There are little problems: 
 * When the content of tabs are quite large.
-* When are relations between the tabs.
+* When there are relations between the tabs.
 
-*In the first one:* When the content are big and you scroll the page, the headers disappear. If the user want to click another TAB, he has to move up to see it.
+*In the first one:* When the content are big and you scroll the page, the headers disappear. If the user want to click another TAB, he has to move up to the top to see it.
 
-*In the last one*: When we (programmers) use it (tabs) to make a master-detail thing, we have another issue. The scroll between the tabs are are always at the same. Let me exemplify, if you scroll down on the master tab, then, click on the detail tab and scroll up... when you get back to the master, you will be on the same position that you were on the detail. 
+*In the last one*: When we (programmers) are using it (tabs) to make a master-detail thing, we have another issue. The scroll between the tabs are are always the same. Let me exemplify, if you scroll down on the master tab, then, click on the detail tab and scroll up... when you get back to the master, you will be on the same position that you were on the detail. 
 
 ###### Okay, not so simple to explain, so, come on to better examples.
 
 # The Solution
 
-* If you think is easiest see the example, [Here](https://leandrofranciscato.github.io/bootstrapTabFrozenScroll/) is one with **bootstrapTabFrozenScroll**.
+* If you think is easiest, see the example [Here](https://leandrofranciscato.github.io/bootstrapTabFrozenScroll/).
 
 * Or, follow me: 
 
@@ -24,9 +24,9 @@ You can use it for master-detail thing, or just to present content to users. Any
      ```js
      tabFrozenScroll("#mainTable", ".nav.nav-tabs", 0);
      ```
-where `#mainTable` is the table inside your first tab, `.nav.nav-tabs` is usually the Bootstrap `ul` that represents the tabs and `0` is the number of pixels that you want to the panel float to the top of the page.
+where `#mainTable` is the table inside your first tab, `.nav.nav-tabs` is usually the Bootstrap `ul` that represents the tabs and `0` is the number of pixels that you want to scroll until the panel float to the top of the page.
 
-* If you want to use the dependenci between tabs, you just must define it in the `<a>` tag inside the tabs. Ex.:
+* If you want to use the dependency between tabs, you just must define it in the `<a>` tag inside the tabs. Ex.:
 ```html
 <ul class="nav nav-tabs" data-plugin="nav-tabs" role="tablist">
   <li class="active" 
@@ -49,7 +49,7 @@ where `#mainTable` is the table inside your first tab, `.nav.nav-tabs` is usuall
   </li>
 </ul>  
 ```
-You can notice that in the tab above, the element with the `id="tab0"` doesn't have the tag `data-parent` while the element with `id="tab1` has it; It means the element `tab1` will save the scroll information of `tab0` when you click it.
+You can notice that in the tab above, the element with the `id="tab0"` doesn't have the tag `data-parent` while the element with `id="tab1` has it; It means that the element `tab1` will save the scroll information of `tab0` when you click it.
 
 ### Dependencies
 
