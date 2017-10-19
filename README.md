@@ -11,12 +11,45 @@ You can use it for master-detail thing, or just to present content to users. Any
 
 ###### Okay, not so simple to explain, so, come on to better examples.
 
-### The Solution
+# The Solution
 
-Using this simple project, you are able to solve the issues above.
+* If you think is easiest see the example, [Here](https://leandrofranciscato.github.io/bootstrapTabFrozenScroll/) is one with **bootstrapTabFrozenScroll**.
 
-* Here is an example using the default bootstrap tabs.
-* [Here](https://github.com/LeandroFranciscato/bootstrapTabFrozenScroll/blob/master/example/index.html) is an example using it with **bootstrapTabFrozenScroll**.
+* Or, follow me: 
+
+#### Uinsg
+
+* Add the `tabFrozenScroll.js` and `tabFrozenScroll.css` to your page that contains the Bootstrap Tabs.
+* init the `tabFrozenScroll.js` like this:
+     ```js
+     tabFrozenScroll("#mainTable", ".nav.nav-tabs", 0);
+     ```
+where `#mainTable` is the table inside your first tab, `.nav.nav-tabs` is usually the Bootstrap `ul` that represents the tabs and `0` is the number of pixels that you want to the panel float to the top of the page.
+
+* If you want to use the dependenci between tabs, you just must define it in the `<a>` tag inside the tabs. Ex.:
+```html
+<ul class="nav nav-tabs" data-plugin="nav-tabs" role="tablist">
+  <li class="active" 
+      role="presentation">
+      <a id="tab0"
+         data-toggle="tab" 
+         href="#exampleTabsOne" 
+         aria-controls="exampleTabsOne" 
+         role="tab">TAB 0 - master
+      </a>
+  </li>
+  <li role="presentation">
+      <a id="tab1"
+         data-parent="tab0"
+         data-toggle="tab" 
+         href="#exampleTabsTwo" 
+         aria-controls="exampleTabsTwo" 
+         role="tab">TAB 1 - detail of TAB
+      </a>
+  </li>
+</ul>  
+```
+You can notice that in the tab above, the element with the `id="tab0"` doesn't have the tag `data-parent` while the element with `id="tab1` has it; It means the element `tab1` will save the scroll information of `tab0` when you click it.
 
 ### Dependencies
 
