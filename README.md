@@ -19,14 +19,17 @@ You can use it for master-detail thing, or just to present content to users. Any
 
 #### Uinsg
 
-* Add the `tabFrozenScroll.js` and `tabFrozenScroll.css` to your page that contains the Bootstrap Tabs.
-* init the `tabFrozenScroll.js` like this:
+* Add the `jquery.tabFrozenScroll.js` and `jquery.tabFrozenScroll.css` to your page that contains the Bootstrap Tabs.
+* init the `jquery.tabFrozenScroll.js` like this:
      ```js
-     tabFrozenScroll("#mainTable", ".nav.nav-tabs", 0);
+        $(".nav.nav-tabs").tabFrozenScroll({
+            mainTable: "#mainTable"
+        });
      ```
-where `#mainTable` is the table inside your first tab, `.nav.nav-tabs` is usually the Bootstrap `ul` that represents the tabs and `0` is the number of pixels that you want to scroll until the panel float to the top of the page.
+where `#mainTable` is the table inside your first tab, `.nav.nav-tabs` is usually the Bootstrap `ul` that represents the tabs.
 
-* If you want to use the dependency between tabs, you just must define it in the `<a>` tag inside the tabs. Ex.:
+* As almost always the HTML of booststrap tabs is defined as below:
+
 ```html
 <ul class="nav nav-tabs" data-plugin="nav-tabs" role="tablist">
   <li class="active" 
@@ -39,8 +42,7 @@ where `#mainTable` is the table inside your first tab, `.nav.nav-tabs` is usuall
       </a>
   </li>
   <li role="presentation">
-      <a id="tab1"
-         data-parent="tab0"
+      <a id="tab1"         
          data-toggle="tab" 
          href="#exampleTabsTwo" 
          aria-controls="exampleTabsTwo" 
@@ -49,12 +51,29 @@ where `#mainTable` is the table inside your first tab, `.nav.nav-tabs` is usuall
   </li>
 </ul>  
 ```
-You can notice that in the tab above, the element with the `id="tab0"` doesn't have the tag `data-parent` while the element with `id="tab1` has it; It means that the element `tab1` will save the scroll information of `tab0` when you click it.
+### Options
+
+#### See the Example below:
+
+```js
+$(".nav.nav-tabs").tabFrozenScroll({
+    mainTable: "#myMainTable",
+    minScrollHeight: 200,
+    tabFixedClass: "my-class-to-fix-tabs",
+    timeBeforeScroll: 50,
+    callbackAfterMove: function(el) {
+        // do something necessary
+    }
+});
+```
+As you can see above, there are some more options:
+
+* `minScrollHeight` : It define the number of pixel from the top of page that you want the TABS to be fixed. The default value is `-1`.
+* `tabFixedClass` : You can modify the default Css Class that is in charge to fix the tab. The default value is `.tab-fixed`.
+* `timeBeforeScroll` : There are some cases that you have a lot of data within a TAB. In this cases, you might use this option in milliseconds to delay it. The default value is a `setTimeout` without the any parameter.
+* `callbackAfterMove` : You can define some callback to be triggered when the tab becomes fixed or unfixed. The default value is `undefined`.
 
 ### Dependencies
 
 * <a href="https://github.com/twbs/bootstrap">Bootstrap</a>.
-* <a href="https://github.com/jquery/jquery">jquery</a>.
-
-
-
+* <a href="https://github.com/jquery/jquery">jQuery</a>.
