@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/LeandroFranciscato/jQuery.tabFrozenScroll.svg?branch=master)](https://travis-ci.org/LeandroFranciscato/jQuery.tabFrozenScroll)
+
 ### The "Problem"
 
 As you must know, [Bootstrap tabs](https://mdbootstrap.com/components/tabs/) are very helpfull in projects that use it.
