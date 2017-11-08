@@ -1,0 +1,5 @@
+before_script:
+  - npm install  
+  - npm install -g gulp-cli
+  - npm install gulp gulp-util gulp-csso gulp-uglify pump gulp-rename
+script: gulp build
