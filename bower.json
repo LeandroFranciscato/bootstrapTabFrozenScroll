@@ -1,0 +1,25 @@
+{
+  "name": "jQuery.tabFrozenScroll",
+  "homepage": "https://github.com/LeandroFranciscato/jQuery.tabFrozenScroll",
+  "description": "This is a simple js to solve the fixed Tabs in Bootstrap.",
+  "main": "/src/js/jquery.tabFrozenScroll.js",
+  "keywords": [
+    "javascript",
+    "js",
+    "jQuery",
+    "Bootstrap",
+    "tabs",
+    "navs",
+    ".nav.nav-tabs",
+    "scroll",
+    "fixed"
+  ],
+  "authors": [
+    "Leandro Franciscato"
+  ],
+  "license": "GPL-3.0",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
+  }
+}

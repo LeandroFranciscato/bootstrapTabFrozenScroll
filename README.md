@@ -17,9 +17,13 @@ You can use it for master-detail thing, or just to present content to users. Any
 
 * Or, follow me: 
 
-#### Uinsg
+## Installing
 
-* Add the `jquery.tabFrozenScroll.js` and `jquery.tabFrozenScroll.css` to your page that contains the Bootstrap Tabs.
+* Using bower `bower install jQuery.tabFrozenScroll`
+* Adding the `jquery.tabFrozenScroll.js` and `jquery.tabFrozenScroll.css` to your page that contains the Bootstrap Tabs.
+
+## Uinsg
+
 * init the `jquery.tabFrozenScroll.js` like this:
      ```js
         $(".nav.nav-tabs").tabFrozenScroll({
